@@ -1,0 +1,8 @@
+2022 Nov 10 Thu 14:11:09 EST test3 /home/hltcoe/nverma/generative-prompting/data/en-zh   561  cd ../en-zh/
+2022 Nov 10 Thu 14:11:09 EST test3 /home/hltcoe/nverma/generative-prompting/data/en-zh   562  l
+2022 Nov 10 Thu 14:11:13 EST test3 /home/hltcoe/nverma/generative-prompting/data/en-zh   563  rm *spm*
+2022 Nov 10 Thu 14:11:14 EST test3 /home/hltcoe/nverma/generative-prompting/data/en-zh   564  l
+2022 Nov 10 Thu 14:11:57 EST test3 /home/hltcoe/nverma/generative-prompting/data/en-zh   565  cp /exp/nverma/domain_adapt/raw/multitarget-ted/en-zh/raw/ted_test1_en-zh.raw.* .
+2022 Nov 10 Thu 14:11:58 EST test3 /home/hltcoe/nverma/generative-prompting/data/en-zh   566  ls
+2022 Nov 10 Thu 14:12:00 EST test3 /home/hltcoe/nverma/generative-prompting/data/en-zh   567  rm *spm*
+2022 Nov 10 Thu 14:12:01 EST test3 /home/hltcoe/nverma/generative-prompting/data/en-zh   568  l

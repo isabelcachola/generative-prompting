@@ -1,0 +1,13 @@
+2022 Nov 10 Thu 14:10:55 EST test3 /home/hltcoe/nverma/generative-prompting/data/en-de   555  cd ~/generative-prompting/data/en-de
+2022 Nov 10 Thu 14:10:56 EST test3 /home/hltcoe/nverma/generative-prompting/data/en-de   556  l
+2022 Nov 10 Thu 14:11:00 EST test3 /home/hltcoe/nverma/generative-prompting/data/en-de   557  rm *spm*
+2022 Nov 10 Thu 14:11:00 EST test3 /home/hltcoe/nverma/generative-prompting/data/en-de   558  ls
+2022 Nov 11 Fri 10:57:50 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/data/en-de   618  cd en-de/
+2022 Nov 11 Fri 10:57:50 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/data/en-de   619  l
+2022 Nov 11 Fri 10:57:54 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/data/en-de   620  cat ted_dev_en-de.raw.de | wc -l
+2022 Nov 11 Fri 10:57:56 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/data/en-de   620  cat ted_dev_en-de.raw.de | wc -l
+2022 Nov 11 Fri 10:58:01 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/data/en-de   621  cat ted_test1_en-de.raw.de | wc -l
+2022 Nov 11 Fri 11:19:59 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/data/en-de   622  python
+2022 Nov 11 Fri 11:22:19 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/data/en-de   623  vim ~/.bashrc
+2022 Nov 11 Fri 12:29:27 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/data/en-de   624  python
+2022 Nov 11 Fri 12:29:28 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/data/en-de   625  ls

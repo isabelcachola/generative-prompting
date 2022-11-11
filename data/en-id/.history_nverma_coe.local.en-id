@@ -1,0 +1,10 @@
+2022 Nov 10 Thu 14:11:06 EST test3 /home/hltcoe/nverma/generative-prompting/data/en-id   559  cd ../en-id/
+2022 Nov 10 Thu 14:11:07 EST test3 /home/hltcoe/nverma/generative-prompting/data/en-id   560  l
+2022 Nov 10 Thu 14:12:03 EST test3 /home/hltcoe/nverma/generative-prompting/data/en-id   569  cd ../en-id
+2022 Nov 10 Thu 14:20:52 EST test3 /home/hltcoe/nverma/generative-prompting/data/en-id   570  ls
+2022 Nov 10 Thu 14:21:08 EST test3 /home/hltcoe/nverma/generative-prompting/data/en-id   571  cp /exp/nverma/domain_adapt/raw/multitarget-ted/en-id/raw/ted_dev_en-id.raw.* .
+2022 Nov 10 Thu 14:21:15 EST test3 /home/hltcoe/nverma/generative-prompting/data/en-id   572  cp /exp/nverma/domain_adapt/raw/multitarget-ted/en-id/raw/ted_test1_en-id.raw.* .
+2022 Nov 10 Thu 14:21:18 EST test3 /home/hltcoe/nverma/generative-prompting/data/en-id   573  rm *spm*
+2022 Nov 10 Thu 14:21:18 EST test3 /home/hltcoe/nverma/generative-prompting/data/en-id   574  ls
+2022 Nov 10 Thu 14:28:00 EST test3 /home/hltcoe/nverma/generative-prompting/data/en-id   575  l
+2022 Nov 10 Thu 14:30:15 EST test3 /home/hltcoe/nverma/generative-prompting/data/en-id   576  ls
