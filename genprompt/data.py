@@ -2,10 +2,11 @@
 Loads and processes each dataset 
 '''
 import argparse
+from typing import Optional
 
 templates = {
     "TED": {
-        "zero": "What is the {} translation of {} A: {}"
+        "zero": "What is the {} translation of {} A: {}",
         "few": "{} = {}"
     }
 }
@@ -24,6 +25,7 @@ def apply_template(template, context: str, prompt: bool, answer: Optional[str] =
     return applied
 
 def main(context_file, answer_file=None):
+    pass
 
 if __name__=='__main__':
 

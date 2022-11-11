@@ -7,13 +7,19 @@ import time
 
 from genprompt import data, models
 
+def init_model(model_name):
+    if model_name == 'gptj':
+        return models.GPTJ()
+    else:
+        raise ValueError()
+
 def main(args):
-    my_model = models.MyModel()
-    my_dataset = data.MyDataset()
+    model = init_model(args.model_name)
+    model.test_prompt()
 
 if __name__=="__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('--example')
+    parser.add_argument('--model_name', default='gptj', choices=['gptj'])
     args = parser.parse_args()
 
     logging.basicConfig(level=logging.INFO, format='%(levelname)s - %(message)s')
