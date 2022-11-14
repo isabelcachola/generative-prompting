@@ -6,6 +6,7 @@ import numpy as np
 from typing import Optional
 import os
 from tqdm import tqdm
+import json
 
 templates = {
     "TED": {
@@ -54,6 +55,7 @@ def make_filename(args):
     
     filename += '+'
     filename += os.path.split(args.test_context_file)[1]
+    filename += '.json'
 
     return filename
 
@@ -64,24 +66,21 @@ def main(args):
             total_examples = len(f.readlines())
     filename = make_filename(args)
     with open(os.path.join(args.output_dir,filename), 'w+') as out_f, open(args.test_context_file) as in_f:
-        if args.zeroshot:
-            prompt=True
-            for line in tqdm(in_f.readlines()):
+        output_dict = {}
+        for i, line in tqdm(enumerate(in_f.readlines())):
+            if args.zeroshot:
+                prompt=True
                 prompt_text = apply_template(templates['TED']['zero'], line.strip(), prompt, language=args.tgt_lang)
-                out_f.write(prompt_text + '\n')
-        elif args.random == False:
-           for line in tqdm(in_f.readlines()):
-               prompt_text = apply_template(templates['TED']['few'], line.strip(), True)
-               examples = retrieve_examples(args.context_file, args.answer_file, args.k, total_examples, False)
-               example_string = '\n'.join(examples)
-               out_f.write(example_string + '\n' + prompt_text + '\n')
-        else:
-            for line in tqdm(in_f.readlines()):
-               prompt_text = apply_template(templates['TED']['few'], line.strip(), True)
-               examples = retrieve_examples(args.context_file, args.answer_file, args.k, total_examples, True)
-               example_string = '\n'.join(examples)
-               out_f.write(example_string + '\n' + prompt_text)
-
+                output_dict[i] = (prompt_text + '\n')
+            else:
+                prompt_text = apply_template(templates['TED']['few'], line.strip(), True)
+                if args.random:
+                   examples = retrieve_examples(args.context_file, args.answer_file, args.k, total_examples, random=True)
+                else:
+                    examples = retrieve_examples(args.context_file, args.answer_file, args.k, total_examples, random=False)
+                example_string = '\n'.join(examples)
+                output_dict[i] = example_string + '\n' + prompt_text + '\n'
+        json.dump(output_dict, out_f, indent=4)
 
 if __name__=='__main__':
 
