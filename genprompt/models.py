@@ -4,19 +4,26 @@ Loads and interacts with each model
 from transformers import AutoModelForCausalLM, AutoTokenizer, PreTrainedTokenizerFast
 from transformers import GPTJForCausalLM
 from transformers import pipeline
-from typing import List
+from typing import List, Iterable
+from transformers.pipelines.pt_utils import KeyDataset
 import spacy
-from datasets import load_dataset
+from datasets import load_dataset, Dataset
 import pandas as pd
 from tqdm import tqdm
+from time import time
+import logging
+
+logger = logging.getLogger(__name__ +'.models')
 
 class Lead3:
     def __init__(self):
         self.nlp = spacy.load('en_core_web_sm')
 
-    def generate_from_prompts(self, examples):
+    def generate_from_prompts(self, examples, fout_path):
         results = []
-        for ex in examples:
+        fout = open(fout_path, 'w')
+        for ex in tqdm(examples):
+            # import ipdb;ipdb.set_trace()
             this_ex = []
             text = ex.split('\n')[0]
             tokens = self.nlp(text)
@@ -25,34 +32,69 @@ class Lead3:
                 if i==2:
                     break
             results.append(' '.join(this_ex))
+            fout.write(' '.join(this_ex) + '\n')
+        fout.close()
         return results
 
     
 class GPT:
     def __init__(self, max_length, model_name, device):
-        # self.generator = pipeline('text-generation', model=model_name)
+        self.batch_size = 2
         self.tokenizer = AutoTokenizer.from_pretrained(model_name, truncation_side='left')
-        self.model = AutoModelForCausalLM.from_pretrained(model_name, pad_token_id=self.tokenizer.eos_token_id, max_length=max_length).to(device)
+        self.generator = pipeline('text-generation', 
+                                    model=model_name,
+                                    tokenizer=self.tokenizer,
+                                    batch_size=self.batch_size)
+        # self.model = AutoModelForCausalLM.from_pretrained(model_name, pad_token_id=self.tokenizer.eos_token_id, max_length=max_length).to(device)
+        self.tokenizer.pad_token = self.tokenizer.eos_token
+        # self.model.config.pad_token_id = self.model.config.eos_token_id
+        # self.tokenizer.padding_side = "left"
         self.device = device
         self.max_length = max_length
         self.max_length_generation = 100
 
-    def generate_from_prompts(self, examples: List[str]) -> List[str]:
-        n_examples = len(examples)
-        output = []
-        for ex in tqdm(examples):
-            inputs = self.tokenizer(ex, truncation=True, return_tensors="pt", max_length=self.max_length-self.max_length_generation).to(self.device)
-            outputs = self.model.generate(**inputs, do_sample=True, top_k=50)
-            outputs = outputs[:,inputs.input_ids.shape[1]-1:] # remove prompts
-            # inputs.input_ids.sha
-            # outputs.shape
-            generation = self.tokenizer.batch_decode(outputs, skip_special_tokens=True)
-            # import ipdb;ipdb.set_trace()
-            # generations = self.generator(ex, max_length=self.max_length, pad_token_id=50256, 
-            #                             num_return_sequences=1, return_full_text=False)
+    def generate_from_prompts(self, examples: Iterable[str], fout_path:str) -> List[str]:
+        fout = open(fout_path, 'w')
+        n = len(examples)
+        dataset = Dataset.from_generator(my_gen)
+        # for ex in tqdm(examples, ncols=0):
+        # for idx in range(0, n-self.batch_size, self.batch_size):
+        for generations in self.generator(KeyDataset(examples, "text"), 
+                                        batch_size=8, truncation=True, 
+                                        max_length=self.max_length-self.max_length_generation, 
+                                        pad_token_id=50256, 
+                                        num_return_sequences=1, 
+                                        return_full_text=False):
+            # batch = examples[idx:min(idx+self.batch_size, n)]
+            # start_tokenize = time()
+            # inputs = self.tokenizer(batch, truncation=True, padding=True, 
+            #                         return_tensors="pt", 
+            #                         max_length=self.max_length-self.max_length_generation).to(self.device)
+            # end_tokenize = time()
+            # logger.debug(f'time to tokenize = {end_tokenize - start_tokenize}')
+
+            # outputs = self.model.generate(**inputs, do_sample=True, top_k=50)
+            # end_generate = time()
+            # logger.debug(f'time to generate = {end_generate - end_tokenize}')
+
+            # generation = self.tokenizer.batch_decode(outputs, skip_special_tokens=True)
+            # logger.debug(f'time to decode = {time() - end_generate}')
+
+            # generations = self.generator(batch, max_length=self.max_length-self.max_length_generation, 
+            #                             pad_token_id=50256, 
+            #                             num_return_sequences=1, 
+            #                             return_full_text=False)
+            logging.debug(f'generations={generations}')
+            # logger.debug(f'Ouput shape = {outputs.shape}')
+            for ex_idx, ex in enumerate(generations):
+                # logger.debug(f'input shape, ex_id ={inputs.input_ids.shape}, {ex_idx}' )
+                # logger.debug(f'input[exid] shape = {inputs.input_ids.shape}')
+                # ex = ex[:,inputs.input_ids[ex_idx].shape[1]-1:] # remove prompts
+                fout.write(ex[0] + '\n')
+                logger.debug(f'Gen: {repr(ex[0])}')
             # output += generations[0]['generated_text']
-            output += generation
-        return output
+            # output += generation
+        fout.close()
 
     def test_prompt(self) -> List[str]:
         dataset = pd.read_csv('triviaqa.sample', header=None)
