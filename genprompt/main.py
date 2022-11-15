@@ -36,8 +36,8 @@ def init_dataset(dataset_name: str) -> List[str]:
         examples = dataset[0].values.tolist()
         return examples
     else:
-        examples = lazy_loader_json(dataset_name)
-        # examples =list(json.load(open(dataset_name)).values())
+        # examples = lazy_loader_json(dataset_name)
+        examples ={'text': list(json.load(open(dataset_name)).values())}
         return examples
 
 def save_generations(results, fout_path):

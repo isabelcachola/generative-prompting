@@ -40,31 +40,32 @@ class Lead3:
 class GPT:
     def __init__(self, max_length, model_name, device):
         self.batch_size = 2
+        self.device = device
         self.tokenizer = AutoTokenizer.from_pretrained(model_name, truncation_side='left')
         self.generator = pipeline('text-generation', 
                                     model=model_name,
                                     tokenizer=self.tokenizer,
-                                    batch_size=self.batch_size)
+                                    batch_size=self.batch_size,
+                                    device=0)
         # self.model = AutoModelForCausalLM.from_pretrained(model_name, pad_token_id=self.tokenizer.eos_token_id, max_length=max_length).to(device)
         self.tokenizer.pad_token = self.tokenizer.eos_token
         # self.model.config.pad_token_id = self.model.config.eos_token_id
         # self.tokenizer.padding_side = "left"
-        self.device = device
         self.max_length = max_length
         self.max_length_generation = 100
 
     def generate_from_prompts(self, examples: Iterable[str], fout_path:str) -> List[str]:
         fout = open(fout_path, 'w')
-        n = len(examples)
-        dataset = Dataset.from_generator(my_gen)
+        #n = len(examples)
+        dataset = Dataset.from_dict(examples)
         # for ex in tqdm(examples, ncols=0):
         # for idx in range(0, n-self.batch_size, self.batch_size):
-        for generations in self.generator(KeyDataset(examples, "text"), 
-                                        batch_size=8, truncation=True, 
+        for generations in tqdm(self.generator(KeyDataset(dataset, "text"), 
+                                        batch_size=self.batch_size, truncation=True, 
                                         max_length=self.max_length-self.max_length_generation, 
                                         pad_token_id=50256, 
                                         num_return_sequences=1, 
-                                        return_full_text=False):
+                                        return_full_text=False)):
             # batch = examples[idx:min(idx+self.batch_size, n)]
             # start_tokenize = time()
             # inputs = self.tokenizer(batch, truncation=True, padding=True, 
