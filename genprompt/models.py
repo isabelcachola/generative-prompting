@@ -38,19 +38,19 @@ class Lead3:
 
     
 class GPT:
-    def __init__(self, max_length, model_name, device):
-        self.batch_size = 2
+    def __init__(self, max_length, batch_size, model_name, device):
+        self.batch_size = batch_size
         self.device = device
         self.tokenizer = AutoTokenizer.from_pretrained(model_name, truncation_side='left')
+        self.model = AutoModelForCausalLM.from_pretrained(model_name, pad_token_id=self.tokenizer.eos_token_id, max_length=max_length).to(device)
+        self.model.config.pad_token_id = self.model.config.eos_token_id
+        self.tokenizer.padding_side = "left"
+        self.tokenizer.pad_token = self.tokenizer.eos_token
         self.generator = pipeline('text-generation', 
-                                    model=model_name,
+                                    model=self.model,
                                     tokenizer=self.tokenizer,
                                     batch_size=self.batch_size,
                                     device=0)
-        # self.model = AutoModelForCausalLM.from_pretrained(model_name, pad_token_id=self.tokenizer.eos_token_id, max_length=max_length).to(device)
-        self.tokenizer.pad_token = self.tokenizer.eos_token
-        # self.model.config.pad_token_id = self.model.config.eos_token_id
-        # self.tokenizer.padding_side = "left"
         self.max_length = max_length
         self.max_length_generation = 100
 
@@ -64,6 +64,7 @@ class GPT:
                                         batch_size=self.batch_size, truncation=True, 
                                         max_length=self.max_length-self.max_length_generation, 
                                         pad_token_id=50256, 
+                                        clean_up_tokenization_spaces=True,
                                         num_return_sequences=1, 
                                         return_full_text=False)):
             # batch = examples[idx:min(idx+self.batch_size, n)]
@@ -91,8 +92,8 @@ class GPT:
                 # logger.debug(f'input shape, ex_id ={inputs.input_ids.shape}, {ex_idx}' )
                 # logger.debug(f'input[exid] shape = {inputs.input_ids.shape}')
                 # ex = ex[:,inputs.input_ids[ex_idx].shape[1]-1:] # remove prompts
-                fout.write(ex[0] + '\n')
-                logger.debug(f'Gen: {repr(ex[0])}')
+                fout.write(ex['generated_text'].replace('\n', '') + '\n')
+                logger.debug(f'Gen: {repr(ex["generated_text"])}')
             # output += generations[0]['generated_text']
             # output += generation
         fout.close()
