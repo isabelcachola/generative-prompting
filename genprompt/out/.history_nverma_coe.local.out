@@ -104,3 +104,57 @@
 2022 Nov 14 Mon 18:11:37 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   964  head zeroshot+ted_dev_en-
 2022 Nov 14 Mon 18:11:39 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   965  head zeroshot+ted_dev_en-de.raw.de.json 
 2022 Nov 14 Mon 18:11:49 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   965  head zeroshot+ted_dev_en-de.raw.de.json 
+2022 Nov 15 Tue 11:47:27 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   980  cd out
+2022 Nov 15 Tue 11:53:05 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   981  ls
+2022 Nov 15 Tue 11:53:12 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   982  head zeroshot+ted_dev_en-de.raw.de.json 
+2022 Nov 15 Tue 12:02:33 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   983  l
+2022 Nov 15 Tue 12:02:39 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   983  l
+2022 Nov 15 Tue 12:32:19 EST r7n04 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   511  cd out
+2022 Nov 15 Tue 12:32:19 EST r7n04 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   511  cd out
+2022 Nov 15 Tue 12:32:20 EST r7n04 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   512  l
+2022 Nov 15 Tue 12:44:55 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   994  cd ../out
+2022 Nov 15 Tue 12:44:55 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   995  l
+2022 Nov 15 Tue 12:45:01 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   996  vim sample.json 
+2022 Nov 15 Tue 12:45:14 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   997  tmux a -t 8
+2022 Nov 15 Tue 12:45:41 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   998  ssh r7n04
+2022 Nov 15 Tue 12:46:08 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   999  tmux a -t 8
+2022 Nov 15 Tue 12:46:31 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out  1000  ssh r7n04
+2022 Nov 15 Tue 12:46:33 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out  1001  ssh r7n04
+2022 Nov 15 Tue 12:50:55 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out  1002  tmux a -t 8
+2022 Nov 15 Tue 12:50:56 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out  1003  ls
+2022 Nov 15 Tue 12:54:22 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out  1012  cd out
+2022 Nov 15 Tue 12:54:23 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out  1013  l
+2022 Nov 15 Tue 12:54:26 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out  1014  vim sample.json 
+2022 Nov 15 Tue 12:54:34 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out  1015  vim sample.json 
+2022 Nov 15 Tue 12:55:03 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out  1016  tmux a -t 8
+2022 Nov 15 Tue 12:55:04 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out  1017  ls
+2022 Nov 15 Tue 12:58:43 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out  1034  cd out
+2022 Nov 15 Tue 12:58:44 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out  1035  l
+2022 Nov 15 Tue 12:58:48 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out  1036  cat zeroshot+ted_dev_en-de.raw.de.json | wc -l
+2022 Dec 16 Fri 13:58:35 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   557  cd out
+2022 Dec 16 Fri 13:58:36 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   558  l
+2022 Dec 16 Fri 13:58:55 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   561  cd out
+2022 Dec 16 Fri 13:58:57 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   562  ls
+2022 Dec 16 Fri 14:00:00 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   562  ls
+2022 Dec 16 Fri 14:00:10 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   565  cd out
+2022 Dec 16 Fri 14:00:10 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   566  l
+2022 Dec 16 Fri 14:00:39 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   567  mkdir baseline
+2022 Dec 16 Fri 14:00:42 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   568  mv baseline+* baseline
+2022 Dec 16 Fri 14:00:43 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   569  ls
+2022 Dec 16 Fri 14:00:56 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   574  cd ..
+2022 Dec 16 Fri 14:00:57 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   575  l
+2022 Dec 16 Fri 14:00:59 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   576  rm -rf baseline
+2022 Dec 16 Fri 14:00:59 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   577  l
+2022 Dec 16 Fri 14:01:01 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   578  mkdir zeroshot
+2022 Dec 16 Fri 14:01:11 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   579  mv zeroshot+* zeroshot
+2022 Dec 16 Fri 14:01:12 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   580  l
+2022 Dec 16 Fri 14:01:26 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   585  cd out
+2022 Dec 16 Fri 14:01:26 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   586  l
+2022 Dec 16 Fri 14:01:28 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   587  rm baseline+ted_dev_en-
+2022 Dec 16 Fri 14:01:29 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   588  ls
+2022 Dec 16 Fri 14:01:31 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   589  rm baseline+ted_dev_en-*
+2022 Dec 16 Fri 14:01:34 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   590  rm random+ted_dev_en-*
+2022 Dec 16 Fri 14:01:35 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   591  ls
+2022 Dec 16 Fri 14:01:39 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   592  vim sample.json 
+2022 Dec 16 Fri 14:03:40 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   601  cd out
+2022 Dec 16 Fri 14:03:41 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   602  l

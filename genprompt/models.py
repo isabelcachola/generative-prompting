@@ -61,7 +61,7 @@ class GPT:
         # for ex in tqdm(examples, ncols=0):
         # for idx in range(0, n-self.batch_size, self.batch_size):
         for generations in tqdm(self.generator(KeyDataset(dataset, "text"), 
-                                        batch_size=self.batch_size, truncation=True, 
+                                        batch_size=self.batch_size, 
                                         max_length=self.max_length-self.max_length_generation, 
                                         pad_token_id=50256, 
                                         clean_up_tokenization_spaces=True,

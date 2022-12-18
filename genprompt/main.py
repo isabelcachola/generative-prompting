@@ -6,7 +6,8 @@ import logging
 import time
 import torch
 import pandas as pd
-from genprompt import data, models
+import data
+import models
 import json
 import ijson
 from typing import List
