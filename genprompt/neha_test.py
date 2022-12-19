@@ -31,9 +31,8 @@ with torch.no_grad():
         )
 
         gen_text = tokenizer.batch_decode(gen_tokens[:,toked.input_ids.shape[1]:], skip_special_tokens=True)
-        breakpoint()
         for line in gen_text:
-            print(line)
+            print(line.strip())
         pbar.update(batch_sz)
         i+=batch_sz
     pbar.close()
