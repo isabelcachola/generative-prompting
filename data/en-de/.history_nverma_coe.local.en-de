@@ -28,3 +28,12 @@
 2022 Nov 15 Tue 14:12:26 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/data/en-de  1133  l
 2022 Dec 16 Fri 13:52:15 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/data/en-de   531  cd en-de/
 2022 Dec 16 Fri 13:52:15 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/data/en-de   532  l
+2022 Dec 19 Mon 12:11:16 EST r7n04 /home/hltcoe/nverma/ssl_class/generative-prompting/data/en-de   528  cd ../data/en-de/
+2022 Dec 19 Mon 12:11:16 EST r7n04 /home/hltcoe/nverma/ssl_class/generative-prompting/data/en-de   529  l
+2022 Dec 19 Mon 12:11:57 EST r7n04 /home/hltcoe/nverma/ssl_class/generative-prompting/data/en-de   530  awk '{print NF}' ted_dev_en-de.raw.en > test
+2022 Dec 19 Mon 12:12:05 EST r7n04 /home/hltcoe/nverma/ssl_class/generative-prompting/data/en-de   531  vim test
+2022 Dec 19 Mon 12:12:19 EST r7n04 /home/hltcoe/nverma/ssl_class/generative-prompting/data/en-de   531  vim test
+2022 Dec 19 Mon 12:12:32 EST r7n04 /home/hltcoe/nverma/ssl_class/generative-prompting/data/en-de   531  vim test
+2022 Dec 19 Mon 12:12:34 EST r7n04 /home/hltcoe/nverma/ssl_class/generative-prompting/data/en-de   532  rm te
+2022 Dec 19 Mon 12:12:35 EST r7n04 /home/hltcoe/nverma/ssl_class/generative-prompting/data/en-de   533  rm test
+2022 Dec 19 Mon 12:12:36 EST r7n04 /home/hltcoe/nverma/ssl_class/generative-prompting/data/en-de   534  l

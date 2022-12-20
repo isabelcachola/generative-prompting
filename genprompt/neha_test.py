@@ -14,12 +14,10 @@ with open('out_k1/baseline+ted_dev_en-de.raw.de.json') as f:
 
 
 lines_length = len(lines)
-print(lines_length)
 line_list = list(lines.values())
 batch_sz = 8
 i = 0
 with torch.no_grad():
-    pbar = tqdm(total=lines_length)
     while i < lines_length:
         prompt_batch = line_list[i:i+batch_sz]
         toked = tokenizer(prompt_batch, return_tensors='pt', padding=True, truncation=True).to(device)
@@ -27,12 +25,10 @@ with torch.no_grad():
         gen_tokens = model.generate(
             **toked,
             do_sample=False,
-            max_new_tokens=20,
+            max_new_tokens=100,
         )
 
         gen_text = tokenizer.batch_decode(gen_tokens[:,toked.input_ids.shape[1]:], skip_special_tokens=True)
         for line in gen_text:
-            print(line.strip())
-        pbar.update(batch_sz)
+            print(line.split('\n')[0].strip())
         i+=batch_sz
-    pbar.close()
