@@ -66,9 +66,9 @@ def truncate_example(ex, i):
     formatted_ex = ex.split(' ')
     if len(formatted_ex) > args.max_total:
         formatted_ex = formatted_ex[len(formatted_ex)-args.max_total:]
-        formatted_ex = ' '.join(formatted_ex)
     if i in SKIP_THESE:
         return ''
+    formatted_ex = ' '.join(formatted_ex)
     return formatted_ex
 
 def main(args):
@@ -85,7 +85,7 @@ def main(args):
             question = ex['question']
             answer = ";".join(ex['answer']['aliases'])
             formatted_ex = templates['triviaqa']['zeroshot'].format(context, question)
-            formatted_ex = truncate_example(ex, i)
+            formatted_ex = truncate_example(formatted_ex, i)
             if formatted_ex != '':
                 answers.append(answer)
                 examples[f'{i}'] = formatted_ex
