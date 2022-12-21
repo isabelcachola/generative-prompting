@@ -41,8 +41,8 @@ class Lead3:
 
     
 class GPT:
-    def __init__(self, max_length, model_name, device):
-        self.batch_size = 2
+    def __init__(self, max_length, batch_size, model_name, device):
+        self.batch_size = batch_size
         self.device = device
         self.tokenizer = AutoTokenizer.from_pretrained(model_name, padding_side="left")
         self.tokenizer.add_special_tokens({'pad_token': self.tokenizer.eos_token})

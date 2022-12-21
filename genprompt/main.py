@@ -6,7 +6,8 @@ import logging
 import time
 import torch
 import pandas as pd
-from genprompt import data, models
+import data
+import models
 import json
 import ijson
 from typing import List
@@ -17,7 +18,7 @@ def init_model(model_name, max_length, batch_size):
     if model_name == 'lead3':
         return models.Lead3()
     elif model_name == 'gpt-neo':
-        return models.GPT(max_length, 'EleutherAI/gpt-neo-1.3B', device)
+        return models.GPT(max_length, batch_size, 'EleutherAI/gpt-neo-1.3B', device)
     elif model_name == 'gpt-j':
         return models.GPT(max_length, 'EleutherAI/gpt-j-6B', device)
     elif model_name == 'gpt-3':
@@ -56,8 +57,7 @@ def main(args):
     model_end_load_time = time.time()
     logger.info(f'Time to load model: {model_end_load_time-model_start_load_time} secs')
     
-
-    logger.info(f'Running generations...')
+    logging.info(f'Running generations...')
     model.generate_from_prompts(examples, args.outfile)
     # save_generations(output, args.outfile)
     # print(output)

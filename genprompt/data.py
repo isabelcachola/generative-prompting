@@ -10,7 +10,7 @@ import json
 
 templates = {
     "TED": {
-        "zero": "What is the {} translation of {} A: {}",
+        "zero": "Q: What is the {} translation of {} A: {}",
         "few": "{} = {}"
     }
 }
@@ -71,7 +71,7 @@ def main(args):
             if args.zeroshot:
                 prompt=True
                 prompt_text = apply_template(templates['TED']['zero'], line.strip(), prompt, language=args.tgt_lang)
-                output_dict[i] = (prompt_text + '\n')
+                output_dict[i] = prompt_text
             else:
                 prompt_text = apply_template(templates['TED']['few'], line.strip(), True)
                 if args.random:
@@ -79,7 +79,7 @@ def main(args):
                 else:
                     examples = retrieve_examples(args.context_file, args.answer_file, args.k, total_examples, random=False)
                 example_string = '\n'.join(examples)
-                output_dict[i] = example_string + '\n' + prompt_text + '\n'
+                output_dict[i] = example_string + '\n' + prompt_text 
         json.dump(output_dict, out_f, indent=4)
 
 if __name__=='__main__':

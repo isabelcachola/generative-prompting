@@ -6,3 +6,8 @@
 2022 Nov 10 Thu 14:11:58 EST test3 /home/hltcoe/nverma/generative-prompting/data/en-zh   566  ls
 2022 Nov 10 Thu 14:12:00 EST test3 /home/hltcoe/nverma/generative-prompting/data/en-zh   567  rm *spm*
 2022 Nov 10 Thu 14:12:01 EST test3 /home/hltcoe/nverma/generative-prompting/data/en-zh   568  l
+2022 Dec 16 Fri 13:52:27 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/data/en-zh   539  cd en-zh/
+2022 Dec 16 Fri 13:52:28 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/data/en-zh   540  l
+2022 Dec 16 Fri 13:52:32 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/data/en-zh   541  vim context_samples_en-zh.
+2022 Dec 16 Fri 13:52:35 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/data/en-zh   542  vim context_samples_en-zh.en
+2022 Dec 16 Fri 13:52:36 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/data/en-zh   543  ll
