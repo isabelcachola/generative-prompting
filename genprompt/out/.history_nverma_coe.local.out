@@ -167,3 +167,9 @@
 2022 Dec 20 Tue 11:41:41 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   544  cd out
 2022 Dec 20 Tue 11:41:41 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   545  l
 2022 Dec 20 Tue 11:41:43 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   546  cd ../out_x
+2022 Dec 21 Wed 11:42:10 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   541  cd ../out
+2022 Dec 21 Wed 11:42:10 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   542  l
+2022 Dec 21 Wed 11:42:32 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   547  cd ..
+2022 Dec 21 Wed 11:42:32 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   548  l
+2022 Dec 21 Wed 11:42:36 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   551  cd out
+2022 Dec 21 Wed 11:42:37 EST test3 /home/hltcoe/nverma/ssl_class/generative-prompting/genprompt/out   552  tree
