@@ -11,7 +11,7 @@ import random
 
 from datasets import load_dataset
 
-
+SKIP_THESE = [870, 1279, 5232]
 templates = {
     "triviaqa": 
      {
@@ -62,6 +62,15 @@ def get_context_from_dict(ex, idx, max_context):
     context = ' '.join(context.split()[:max_context])
     return context
 
+def truncate_example(ex, i):
+    formatted_ex = ex.split(' ')
+    if len(formatted_ex) > args.max_total:
+        formatted_ex = formatted_ex[len(formatted_ex)-args.max_total:]
+        formatted_ex = ' '.join(formatted_ex)
+    if i in SKIP_THESE:
+        return ''
+    return formatted_ex
+
 def main(args):
     dataset = load_dataset("trivia_qa", "rc", split='validation')
     context = dataset['entity_pages'][0]['wiki_context']
@@ -75,13 +84,11 @@ def main(args):
             context = get_context_from_example(ex, args.max_context)
             question = ex['question']
             answer = ";".join(ex['answer']['aliases'])
-            answers.append(answer)
             formatted_ex = templates['triviaqa']['zeroshot'].format(context, question)
-            formatted_ex = formatted_ex.split(' ')
-            if len(formatted_ex) > args.max_total:
-                formatted_ex = formatted_ex[len(formatted_ex)-args.max_total:]
-            formatted_ex = ' '.join(formatted_ex)
-            examples[f'{i}'] = formatted_ex
+            formatted_ex = truncate_example(ex, i)
+            if formatted_ex != '':
+                answers.append(answer)
+                examples[f'{i}'] = formatted_ex
 
     elif args.random:
         train_dataset = load_dataset("trivia_qa", "rc", split='train')
@@ -100,13 +107,11 @@ def main(args):
             context = get_context_from_example(ex, args.max_context)
             question = ex['question']
             answer = ";".join(ex['answer']['aliases'])
-            answers.append(answer)
             formatted_ex += templates['triviaqa']['zeroshot'].format(context, question)
-            formatted_ex = formatted_ex.split(' ')
-            if len(formatted_ex) > args.max_total:
-                formatted_ex = formatted_ex[len(formatted_ex)-args.max_total:]
-            formatted_ex = ' '.join(formatted_ex)
-            examples[f'{i}'] = formatted_ex
+            formatted_ex = truncate_example(formatted_ex, i)
+            if formatted_ex != '':
+                answers.append(answer)
+                examples[f'{i}'] = formatted_ex
     else:
         train_dataset = load_dataset("trivia_qa", "rc", split='train')
         for i, ex in tqdm(enumerate(dataset)):
@@ -124,13 +129,11 @@ def main(args):
             context = get_context_from_example(ex, args.max_context)
             question = ex['question']
             answer = ";".join(ex['answer']['aliases'])
-            answers.append(answer)
             formatted_ex += templates['triviaqa']['zeroshot'].format(context, question)
-            formatted_ex = formatted_ex.split(' ')
-            if len(formatted_ex) > args.max_total:
-                formatted_ex = formatted_ex[len(formatted_ex)-args.max_total:]
-            formatted_ex = ' '.join(formatted_ex)
-            examples[f'{i}'] = formatted_ex
+            formatted_ex = truncate_example(formatted_ex, i)
+            if formatted_ex != '':
+                answers.append(answer)
+                examples[f'{i}'] = formatted_ex
     
     with open(prompts_file, 'w') as fout:
         json.dump(examples, fout, indent=4)
